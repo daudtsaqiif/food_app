@@ -32,10 +32,7 @@ class _MainPageState extends State<MainPage> {
               },
               children: [
                 Center(
-                  child: Text(
-                    'Screen 1',
-                    style: blackFontStyle1,
-                  ),
+                  child: FoodPage(),
                 ),
                 Center(
                   child: Text(
@@ -60,6 +57,7 @@ class _MainPageState extends State<MainPage> {
                 setState(() {
                   selectedPage = index;
                 });
+                pageController.jumpToPage(index);
               },
             ),
           )
