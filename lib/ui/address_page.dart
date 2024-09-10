@@ -219,6 +219,27 @@ class _AddressPageState extends State<AddressPage> {
               underline: SizedBox(),
             ),
           ),
+          Container(
+            width: double.infinity,
+            height: 45,
+            margin: EdgeInsets.only(top: 24),
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: mainColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {
+                
+              },
+              child: Text(
+                'Create account',
+                style: blackFontStyle3.copyWith(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
     );
