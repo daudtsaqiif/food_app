@@ -84,7 +84,7 @@ class GeneralPage extends StatelessWidget {
                 Container(
                   height: defaultMargin,
                   width: double.infinity,
-                  color: "FAFAFC".toColor(),
+                  color: "pink".toColor(),
                 ),
                 child ?? SizedBox(),
               ],
