@@ -15,6 +15,7 @@ class FoodListItem extends StatelessWidget {
           width: 80,
           margin: EdgeInsets.only(right: 12),
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
               image: NetworkImage(food?.picturePath ??
                   'https://ui-avatars.com/api/?name=${food?.name}'),
@@ -25,6 +26,7 @@ class FoodListItem extends StatelessWidget {
         SizedBox(
           width: itemWidth! - 182, //(80 + 12 + 90)
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 food?.name ?? 'No Name',

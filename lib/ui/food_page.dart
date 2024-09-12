@@ -12,15 +12,13 @@ class _FoodPageState extends State<FoodPage> {
 
   @override
   Widget build(BuildContext context) {
-
-    double listItemWidth = MediaQuery.of(context).size.width - 2 * defaultMargin;
-
+    double listItemWidth =
+        MediaQuery.of(context).size.width - 2 * defaultMargin;
     return ListView(
       children: [
         //   Header
         Container(
           color: Colors.white,
-          height: 100,
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: defaultMargin),
           child: Row(
@@ -94,23 +92,31 @@ class _FoodPageState extends State<FoodPage> {
               SizedBox(
                 height: 20,
               ),
-              Builder(builder: (_) {
-                List<Food> food = (selectedIndex == 0)
-                    ? mockFoods
-                    : (selectedIndex == 1)
-                        ? []
-                        : [];
-                return Column(
-                  children: food
-                      .map(
-                        (e) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FoodListItem(food: e, itemWidth: listItemWidth,),
-                        ),
-                      )
-                      .toList(),
-                );
-              })
+              Builder(
+                builder: (_) {
+                  List<Food> food = (selectedIndex == 0)
+                      ? mockFoods
+                      : (selectedIndex == 1)
+                          ? []
+                          : [];
+                  return Column(
+                    children: food
+                        .map(
+                          (e) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FoodListItem(
+                              food: e,
+                              itemWidth: listItemWidth,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 80,
+              ),
             ],
           ),
         ),
