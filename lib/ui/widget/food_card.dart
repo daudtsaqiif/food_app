@@ -10,18 +10,24 @@ class FoodCard extends StatelessWidget {
     return Container(
       height: 200,
       width: 200,
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 5,
             spreadRadius: 3,
-            offset: Offset(1, 1)),
-      ]),
+            offset: Offset(1, 1),
+          ),
+        ],
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Column(
         children: <Widget>[
           Container(
             height: 140,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                   image: NetworkImage(food?.picturePath ?? ''),
                   fit: BoxFit.cover),

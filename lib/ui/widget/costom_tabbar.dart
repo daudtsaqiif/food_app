@@ -30,6 +30,7 @@ class CustomTabbar extends StatelessWidget {
                       left: defaultMargin,
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         GestureDetector(
                             onTap: () {
@@ -51,7 +52,7 @@ class CustomTabbar extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             color: (titles.indexOf(e) == selectedIndex)
-                                ? Colors.amber
+                                ? Colors.black
                                 : Colors.transparent,
                           ),
                         ),

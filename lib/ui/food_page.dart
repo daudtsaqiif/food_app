@@ -12,6 +12,9 @@ class _FoodPageState extends State<FoodPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    double listItemWidth = MediaQuery.of(context).size.width - 2 * defaultMargin;
+
     return ListView(
       children: [
         //   Header
@@ -77,12 +80,37 @@ class _FoodPageState extends State<FoodPage> {
             children: [
               CustomTabbar(
                 selectedIndex: selectedIndex,
-                titles: ['New Taste', 'Popular', 'Recommended'],
-                onTap: (index) {},
+                titles: [
+                  'New Taste',
+                  'Popular',
+                  'Recommended',
+                ],
+                onTap: (index) {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
               ),
               SizedBox(
                 height: 20,
-              )
+              ),
+              Builder(builder: (_) {
+                List<Food> food = (selectedIndex == 0)
+                    ? mockFoods
+                    : (selectedIndex == 1)
+                        ? []
+                        : [];
+                return Column(
+                  children: food
+                      .map(
+                        (e) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FoodListItem(food: e, itemWidth: listItemWidth,),
+                        ),
+                      )
+                      .toList(),
+                );
+              })
             ],
           ),
         ),
