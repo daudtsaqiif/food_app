@@ -1,8 +1,13 @@
 part of 'models.dart';
 
-enum TransactionStatus { delivered, on_delivery, pending, cancled }
+enum TransactionStatus {
+  delivered,
+  on_delivery,
+  pending,
+  cancled,
+}
 
-class Transaction {
+class Transaction extends Equatable {
   final int? id;
   final Food? food;
   final int? quantity;
@@ -20,4 +25,37 @@ class Transaction {
     this.status,
     this.user,
   });
+
+  Transaction copyWith({
+    required int id,
+    required Food food,
+    required int quantity,
+    required int total,
+    required DateTime dateTime,
+    required TransactionStatus status,
+    required User user,
+  }) {
+    return Transaction(
+      id: id ?? this.id,
+      food: food ?? this.food,
+      quantity: quantity ?? this.quantity,
+      total: total ?? this.total,
+      dateTime: dateTime ?? this.dateTime,
+      status: status ?? this.status,
+      user: user ?? this.user,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        id,
+        food,
+        quantity,
+        total,
+        dateTime,
+        status,
+        user,
+      ];
 }
+
+List<Transaction> mockTransaction = [];
