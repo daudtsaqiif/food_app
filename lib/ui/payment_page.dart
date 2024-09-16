@@ -111,6 +111,23 @@ class PaymentPage extends StatelessWidget {
                     Text('${transaction.quantity.toString()} item(s)'),
                   ],
                 ),
+                SizedBox(height: 12),
+                //Sub Total
+                Row(
+                  children: [
+                    Text(
+                      "Sub Total",
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(
+                      NumberFormat.currency(
+                              symbol: 'IDR', decimalDigits: 0, locale: 'id_ID')
+                          .format(
+                              transaction.food!.price! * transaction.quantity!),
+                    ),
+                  ],
+                ),
                 Divider(
                   thickness: 1,
                   color: Colors.black,
@@ -127,7 +144,9 @@ class PaymentPage extends StatelessWidget {
                     Text(
                       NumberFormat.currency(
                               symbol: 'IDR', decimalDigits: 0, locale: 'id_ID')
-                          .format(50000),
+                          .format(transaction.food!.price! *
+                              transaction.quantity! *
+                              0.1),
                     ),
                   ],
                 ),
@@ -145,6 +164,109 @@ class PaymentPage extends StatelessWidget {
                               symbol: 'IDR', decimalDigits: 0, locale: 'id_ID')
                           .format(50000),
                     ),
+                  ],
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 12),
+                //total harga
+                Row(
+                  children: [
+                    Text(
+                      'Total',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(
+                      NumberFormat.currency(
+                              symbol: 'IDR', decimalDigits: 0, locale: 'id_ID')
+                          .format(
+                        transaction.total,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: defaultMargin),
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                Text(
+                  'Deliver to:',
+                  style: blackFontStyle3,
+                ),
+                SizedBox(height: 12),
+                //Nama Penerima
+                Row(
+                  children: [
+                    Text(
+                      'Nama Penerima:',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.name!),
+                  ],
+                ),
+                SizedBox(height: 12),
+                //Email Penerima
+                Row(
+                  children: [
+                    Text(
+                      'Email Penerima:',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.email!),
+                  ],
+                ),
+                SizedBox(height: 12),
+                //Phone Number
+                Row(
+                  children: [
+                    Text(
+                      'Phone Number:',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.phoneNumber!),
+                  ],
+                ),
+                SizedBox(height: 12),
+                //Address
+                Row(
+                  children: [
+                    Text(
+                      'Address',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.address!),
+                  ],
+                ),
+                SizedBox(height: 12),
+                //HouseNumber
+                Row(
+                  children: [
+                    Text(
+                      'House NUmber:',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.houseNumber!),
+                  ],
+                ),
+                SizedBox(height: 12),
+                //City
+                Row(
+                  children: [
+                    Text(
+                      'City:',
+                      style: blackFontStyle3,
+                    ),
+                    Spacer(),
+                    Text(transaction.user!.city!),
                   ],
                 ),
               ],
