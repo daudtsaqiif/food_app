@@ -197,7 +197,7 @@ class PaymentPage extends StatelessWidget {
                   'Deliver to:',
                   style: blackFontStyle3,
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //Nama Penerima
                 Row(
                   children: [
@@ -209,7 +209,7 @@ class PaymentPage extends StatelessWidget {
                     Text(transaction.user!.name!),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //Email Penerima
                 Row(
                   children: [
@@ -221,7 +221,7 @@ class PaymentPage extends StatelessWidget {
                     Text(transaction.user!.email!),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //Phone Number
                 Row(
                   children: [
@@ -233,7 +233,7 @@ class PaymentPage extends StatelessWidget {
                     Text(transaction.user!.phoneNumber!),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //Address
                 Row(
                   children: [
@@ -245,7 +245,7 @@ class PaymentPage extends StatelessWidget {
                     Text(transaction.user!.address!),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //HouseNumber
                 Row(
                   children: [
@@ -257,7 +257,7 @@ class PaymentPage extends StatelessWidget {
                     Text(transaction.user!.houseNumber!),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 10),
                 //City
                 Row(
                   children: [
@@ -268,6 +268,22 @@ class PaymentPage extends StatelessWidget {
                     Spacer(),
                     Text(transaction.user!.city!),
                   ],
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 45,
+                  margin: EdgeInsets.only(top: 12),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: mainColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: () {},
+                    child: Text(
+                      'Order Now',
+                      style: blackFontStyle3.copyWith(color: Colors.white),
+                    ),
+                  ),
                 ),
               ],
             ),
