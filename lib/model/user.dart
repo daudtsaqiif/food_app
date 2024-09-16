@@ -20,17 +20,28 @@ class User extends Equatable {
     this.city,
     this.picturePath,
   });
-  
+
   @override
   // TODO: implement props
   List<Object?> get props => [
-    id,
-    name,
-    email,
-    address,
-    houseNumber,
-    phoneNumber,
-    city,
-    picturePath,
-  ];
+        id,
+        name,
+        email,
+        address,
+        houseNumber,
+        phoneNumber,
+        city,
+        picturePath,
+      ];
 }
+
+User mockUser = User(
+  id: 1,
+  name: 'Musalim Ucup',
+  email: 'ucupweb@gmail.com',
+  address: 'Jl. Setiabudi No.193',
+  houseNumber: 'A27',
+  phoneNumber: '08130987635',
+  city: 'Bandung',
+  picturePath: 'https://i.pinimg.com/474x/cc/dd/76/ccdd762641c8596cec666c7a30c3e822.jpg'
+);
