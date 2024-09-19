@@ -10,3 +10,4 @@ part 'food_card.dart';
 part 'rating_stars.dart';
 part 'costom_tabbar.dart';
 part 'food_list_item.dart';
+part 'order_list_item.dart';
