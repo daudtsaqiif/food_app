@@ -13,12 +13,13 @@ class OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         //gambar
         Container(
           height: 80,
           width: 80,
-          margin: EdgeInsets.only(right: 12),
+          margin: EdgeInsets.only(right: 5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -60,67 +61,118 @@ class OrderListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('Waktu'),
+              Text(
+                convertDateTimeDisplay(transaction.dateTime!),
+                style: greyFontStyle,
+              ),
               (transaction.status == TransactionStatus.delivered)
                   ? Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
+                          borderRadius: BorderRadius.circular(10),
                           color: Colors.green),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Delivered',
-                          style: blackFontStyle3.copyWith(
-                            color: Colors.white,
-                            fontSize: 11,
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Delivered',
+                              style: blackFontStyle3.copyWith(
+                                color: Colors.white,
+                                fontSize: 12,
+                                letterSpacing: 1.5,
+                              ),
+                            ),
+                            Container(
+                              child: Icon(
+                                MdiIcons.checkCircle,
+                                color: Colors.white,
+                                size: 12,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     )
                   : (transaction.status == TransactionStatus.cancled)
                       ? Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
+                              borderRadius: BorderRadius.circular(10),
                               color: Colors.red),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Cencled',
-                              style: blackFontStyle3.copyWith(
-                                color: Colors.white,
-                                fontSize: 11,
-                              ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Cencled',
+                                  style: blackFontStyle3.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    letterSpacing: 1.5,
+                                  ),
+                                ),
+                                Container(
+                                  child: Icon(
+                                    MdiIcons.checkCircle,
+                                    color: Colors.white,
+                                    size: 12,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         )
                       : (transaction.status == TransactionStatus.pending)
                           ? Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(10),
                                   color: Colors.yellow),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Pending',
-                                  style: blackFontStyle3.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                  ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Pending',
+                                      style: blackFontStyle3.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        letterSpacing: 1.5,
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Icon(
+                                        MdiIcons.checkCircle,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                             )
                           : Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'On Delivery',
-                                  style: blackFontStyle3.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                  ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'On Delivery',
+                                      style: blackFontStyle3.copyWith(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        letterSpacing: 1.5,
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Icon(
+                                        MdiIcons.checkCircle,
+                                        color: Colors.white,
+                                        size: 12,
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
