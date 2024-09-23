@@ -1,5 +1,7 @@
 part of 'models.dart';
 
+enum FoodType { new_food, popular, recommended }
+
 class Food extends Equatable {
   final int? id;
   final String? name;
@@ -8,6 +10,7 @@ class Food extends Equatable {
   final String? ingredients;
   final double? price;
   final double? rate;
+  final List<FoodType>? types;
 
   Food({
     this.id,
@@ -17,6 +20,7 @@ class Food extends Equatable {
     this.ingredients,
     this.price,
     this.rate,
+    this.types = const [],
   });
 
   @override
@@ -43,6 +47,7 @@ List<Food> mockFoods = [
         'Tahu, tempe, kentang, paprika, jamur, saus kacang, kecap manis',
     price: 150000,
     rate: 4.2,
+    types: [FoodType.new_food, FoodType.recommended]
   ),
   Food(
     id: 2,
@@ -55,6 +60,7 @@ List<Food> mockFoods = [
         'Nasi, daging kambing, bawang merah, bawang putih, kecap, cabai, rempah-rempah',
     price: 25000,
     rate: 4.5,
+    types: [FoodType.popular, FoodType.recommended]
   ),
   Food(
     id: 3,
@@ -67,6 +73,7 @@ List<Food> mockFoods = [
         'Mie, daging ayam, jamur, bawang goreng, kuah kaldu, kecap asin',
     price: 20000,
     rate: 4.7,
+    types: [FoodType.new_food]
   ),
   Food(
     id: 4,
@@ -79,6 +86,7 @@ List<Food> mockFoods = [
         'Daging sapi, tepung tapioka, bawang putih, lada, garam, kuah kaldu',
     price: 30000,
     rate: 4.3,
+    types: [FoodType.recommended, FoodType.popular]
   ),
   Food(
     id: 5,
@@ -91,6 +99,7 @@ List<Food> mockFoods = [
         'Ayam, cabai, bawang merah, bawang putih, terasi, kecap manis, plecing kangkung',
     price: 50000,
     rate: 4.8,
+    types: [FoodType.recommended]
   ),
   Food(
     id: 6,
@@ -103,6 +112,7 @@ List<Food> mockFoods = [
         'Tahu, tempe, lontong, bayam, kacang panjang, tauge, kentang, saus kacang',
     price: 20000,
     rate: 4.6,
+    types: [FoodType.popular]
   ),
   Food(
     id: 7,
@@ -114,5 +124,6 @@ List<Food> mockFoods = [
     ingredients: 'Cendol, santan, gula merah, durian, es serut',
     price: 25000,
     rate: 4.4,
+    types: [FoodType.new_food]
   ),
 ];
