@@ -42,11 +42,17 @@ class _FoodPageState extends State<FoodPage> {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            'https://i.pinimg.com/736x/c8/4b/1b/c84b1bc7fb9fe438e9ac111af9db1b94.jpg'),
-                        fit: BoxFit.cover)),
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      (context.read<UserCubit>().state as UserLoaded)
+                              .user
+                              .picturePath ??
+                          'https://ui-avatars.com/api/?name=${(context.read<UserCubit>().state as UserLoaded).user.name}',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               )
             ],
           ),
@@ -56,18 +62,24 @@ class _FoodPageState extends State<FoodPage> {
           height: 220,
           width: double.infinity,
           margin: EdgeInsets.symmetric(vertical: defaultMargin),
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: mockFoods
-                .map((food) => Padding(
-                      padding: EdgeInsets.only(
-                          left: (food == mockFoods.first) ? defaultMargin : 0,
-                          right: defaultMargin),
-                      child: FoodCard(
-                        food: food,
-                      ),
-                    ))
-                .toList(),
+          child: BlocBuilder<FoodCubit, FoodState>(
+            builder: (_, state) => (state is FoodLoaded)
+                ? ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: mockFoods
+                        .map((food) => Padding(
+                              padding: EdgeInsets.only(
+                                  left: (food == mockFoods.first)
+                                      ? defaultMargin
+                                      : 0,
+                                  right: defaultMargin),
+                              child: FoodCard(
+                                food: food,
+                              ),
+                            ))
+                        .toList(),
+                  )
+                : Center(),
           ),
         ),
         //   tab layout
