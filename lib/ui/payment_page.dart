@@ -10,6 +10,7 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
@@ -21,7 +22,6 @@ class _PaymentPageState extends State<PaymentPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          //header
           Container(
             margin: EdgeInsets.symmetric(horizontal: 12),
             padding: EdgeInsets.symmetric(vertical: 12),
@@ -34,6 +34,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   style: blackFontStyle3.copyWith(fontSize: 16),
                 ),
                 SizedBox(height: 12),
+                //header
                 Row(
                   children: <Widget>[
                     Container(
@@ -42,7 +43,8 @@ class _PaymentPageState extends State<PaymentPage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                          image: NetworkImage(widget.transaction.food!.picturePath!),
+                          image: NetworkImage(
+                              widget.transaction.food!.picturePath!),
                         ),
                       ),
                     ),
@@ -128,8 +130,8 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       NumberFormat.currency(
                               symbol: 'IDR', decimalDigits: 0, locale: 'id_ID')
-                          .format(
-                              widget.transaction.food!.price! * widget.transaction.quantity!),
+                          .format(widget.transaction.food!.price! *
+                              widget.transaction.quantity!),
                     ),
                   ],
                 ),
@@ -283,7 +285,47 @@ class _PaymentPageState extends State<PaymentPage> {
                         backgroundColor: mainColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {},
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      bool result = await context
+                          .read<TransactionCubit>()
+                          .submitTransaction(
+                            widget.transaction.copyWith(
+                                dateTime: DateTime.now(),
+                                total:
+                                    (widget.transaction.total! * 1.1).toInt() +
+                                        50000),
+                          );
+                      if (result) {
+                        Get.to(SuccessOrderPage());
+                      } else {
+                        Get.snackbar(
+                          "",
+                          "",
+                          backgroundColor: 'D9435E'.toColor(),
+                          icon: Icon(
+                            MdiIcons.closeCircleOutline,
+                            color: Colors.white,
+                          ),
+                          titleText: Text(
+                            'Transaction Failed',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          messageText: Text(
+                            "Please try again",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                            ),
+                          ),
+                        );
+                      }
+                    },
                     child: Text(
                       'Order Now',
                       style: blackFontStyle3.copyWith(color: Colors.white),

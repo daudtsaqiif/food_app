@@ -70,13 +70,13 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                       Builder(
                         builder: (_) {
                           List<Transaction> transactions = (selectedIndex == 0
-                              ? mockTransaction
+                              ? state.transaction
                                   .where((e) =>
                                       e.status ==
                                           TransactionStatus.on_delivery ||
                                       e.status == TransactionStatus.pending)
                                   .toList()
-                              : mockTransaction
+                              : state.transaction
                                   .where((e) =>
                                       e.status == TransactionStatus.cancled ||
                                       e.status == TransactionStatus.delivered)
