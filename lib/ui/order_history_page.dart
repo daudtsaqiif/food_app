@@ -96,6 +96,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                           );
                         },
                       ),
+                      SizedBox(height: 100)
                     ],
                   ),
                 ),

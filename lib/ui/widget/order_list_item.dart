@@ -144,7 +144,7 @@ class OrderListItem extends StatelessWidget {
                                         color: Colors.white,
                                         size: 12,
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
