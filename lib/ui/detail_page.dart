@@ -102,9 +102,7 @@ class _DetailPageState extends State<DetailPage> {
                               RatingStars(
                                 rate: widget.transaction?.food?.rate,
                               ),
-                             
                             ],
-                            
                           ),
                           // Food quantity
                           Row(
@@ -181,8 +179,7 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 4, 0, 16),
-                        child:
-                            Text(widget.transaction!.food!.ingredients!),
+                        child: Text(widget.transaction!.food!.ingredients!),
                       ),
                       // total price
                       Container(
@@ -235,9 +232,8 @@ class _DetailPageState extends State<DetailPage> {
                                 transaction: widget.transaction!.copywith(
                                   quantity: quantity,
                                   total: quantity *
-                                      (widget.transaction!.food!.price
-                                              !.toInt()
-                                          ),
+                                      (widget.transaction!.food!.price!
+                                          .toInt()),
                                 ),
                               ),
                             );

@@ -227,50 +227,51 @@ class _AddressPageState extends State<AddressPage> {
                                 fontWeight: FontWeight.w600,
                               ),
                             ));
-                      }
-                      User user = widget.user.copywith(
-                          address: addressController.text,
-                          phoneNumber: phoneNumberController.text,
-                          houseNumber: houseNumberController.text,
-                          city: selectedCity);
-
-                      setState(() {
-                        isLoading = true;
-                      });
-
-                      await context.read<UserCubit>().signUp(
-                            user,
-                            widget.password,
-                            pictureFile: widget.pictureFile,
-                          );
-
-                      UserState state = context.read<UserCubit>().state;
-
-                      if (state is UserLoaded) {
-                        context.read<FoodCubit>().getFoods();
-                        context.read<TransactionCubit>().getTransaction();
-                        Get.to(() => MainPage());
                       } else {
-                        Get.snackbar("", "",
-                            backgroundColor: "D9435E".toColor(),
-                            icon: Icon(
-                              MdiIcons.closeCircleOutline,
-                              color: Colors.white,
-                            ),
-                            titleText: Text(
-                              'Sign In Failed',
-                              style: GoogleFonts.poppins(
+                        User user = widget.user.copywith(
+                            address: addressController.text,
+                            phoneNumber: phoneNumberController.text,
+                            houseNumber: houseNumberController.text,
+                            city: selectedCity);
+
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        await context.read<UserCubit>().signUp(
+                              user,
+                              widget.password,
+                              pictureFile: widget.pictureFile,
+                            );
+
+                        UserState state = context.read<UserCubit>().state;
+
+                        if (state is UserLoaded) {
+                          context.read<FoodCubit>().getFoods();
+                          context.read<TransactionCubit>().getTransaction();
+                          Get.to(() => MainPage());
+                        } else {
+                          Get.snackbar("", "",
+                              backgroundColor: "D9435E".toColor(),
+                              icon: Icon(
+                                MdiIcons.closeCircleOutline,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w600,
                               ),
-                            ),
-                            messageText: Text(
-                              "Please try again later",
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                              titleText: Text(
+                                'Sign In Failed',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ));
+                              messageText: Text(
+                                "Please try again later",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ));
+                        }
                       }
                     },
                     child: Text(
