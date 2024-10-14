@@ -204,6 +204,30 @@ class _AddressPageState extends State<AddressPage> {
                       ),
                     ),
                     onPressed: () async {
+                      if (addressController.text == "" ||
+                          phoneNumberController.text == "" ||
+                          houseNumberController == "") {
+                        Get.snackbar("", "",
+                            backgroundColor: "D9435E".toColor(),
+                            icon: Icon(
+                              MdiIcons.closeCircleOutline,
+                              color: Colors.white,
+                            ),
+                            titleText: Text(
+                              "Please fill all the field",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            messageText: Text(
+                              "We don't want to miss you",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ));
+                      }
                       User user = widget.user.copywith(
                           address: addressController.text,
                           phoneNumber: phoneNumberController.text,
