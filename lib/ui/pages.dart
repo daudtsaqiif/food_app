@@ -8,6 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:food_app/cubit/cubit.dart';
 import 'package:food_app/cubit/user_cubit.dart';
 import 'package:food_app/model/models.dart';
+import 'package:food_app/service/services.dart';
 import 'package:food_app/ui/shared/shared.dart';
 import 'package:food_app/ui/widget/widgets.dart';
 import 'package:get/get.dart';

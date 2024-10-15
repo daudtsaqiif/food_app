@@ -249,7 +249,7 @@ class _AddressPageState extends State<AddressPage> {
                         if (state is UserLoaded) {
                           context.read<FoodCubit>().getFoods();
                           context.read<TransactionCubit>().getTransaction();
-                          Get.to(() => MainPage());
+                          Get.to(() => SuccessSignUpPage());
                         } else {
                           Get.snackbar("", "",
                               backgroundColor: "D9435E".toColor(),
