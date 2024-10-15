@@ -106,9 +106,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      'Edit Profile',
-                                      style: blackFontStyle2,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(EditProfilePage());
+                                      },
+                                      child: Text(
+                                        'Edit Profile',
+                                        style: blackFontStyle2,
+                                      ),
                                     ),
                                     Icon(
                                       MdiIcons.chevronRight,
