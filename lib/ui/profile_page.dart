@@ -34,7 +34,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: NetworkImage(
-                          'https://i.pinimg.com/736x/c8/4b/1b/c84b1bc7fb9fe438e9ac111af9db1b94.jpg'),
+                        (context.read<UserCubit>().state as UserLoaded)
+                                .user
+                                .picturepath ??
+                            'https://ui-avatars.com/api/?name=${(context.read<UserCubit>().state as UserLoaded)}',
+                      ),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,11 +49,13 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 20,
             ),
             Text(
-              'User',
+              (context.read<UserCubit>().state as UserLoaded).user.name ??
+                  'Name',
               style: blackFontStyle1,
             ),
             Text(
-              'Email',
+              (context.read<UserCubit>().state as UserLoaded).user.email ??
+                  'email',
               style: greyFontStyle,
             ),
             SizedBox(
@@ -164,8 +170,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    ElevatedButton(
-                                      onPressed: () {
+                                    GestureDetector(
+                                      onTap: () {
                                         context.read<UserCubit>().signOut();
                                         Get.to(SignInPage());
                                       },
